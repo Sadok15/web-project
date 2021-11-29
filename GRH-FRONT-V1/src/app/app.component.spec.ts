@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'GRH-FRONT'`, () => {
+  it(`should have as title 'GRH-FRONT-V1'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('GRH-FRONT');
+    expect(app.title).toEqual('GRH-FRONT-V1');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('GRH-FRONT app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('GRH-FRONT-V1 app is running!');
   });
 });
