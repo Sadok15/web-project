@@ -1,3 +1,4 @@
+
 <div class="container">
 <form class="form-inline form-test">
   <div class="row">
@@ -16,6 +17,7 @@
   <!--<div class="form-group form-inline">
       Full text search: <input class="form-control ml-2" type="text" name="searchTerm" />
   </div>!-->
+
 <div class="table-container">
 <div class="container">
   <table class="table table-striped">
@@ -45,6 +47,51 @@
   </table>
 </div>
 </div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col" sortable="name" >Country</th> <!--(sort)="onSort($event)"-->
+      <th scope="col" sortable="area">Area</th>
+      <th scope="col" sortable="population">Population</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>
+        <ngb-highlight [result]="" ></ngb-highlight>
+      </td>
+      <td><ngb-highlight [result]="13 | number" ></ngb-highlight></td>
+      <td><ngb-highlight [result]="1000 | number" ></ngb-highlight></td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>
+        <ngb-highlight [result]="" ></ngb-highlight>
+      </td>
+      <td><ngb-highlight [result]="13 | number" ></ngb-highlight></td>
+      <td><ngb-highlight [result]="1000 | number" ></ngb-highlight></td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>
+        <ngb-highlight [result]="" ></ngb-highlight>
+      </td>
+      <td><ngb-highlight [result]="13 | number" ></ngb-highlight></td>
+      <td><ngb-highlight [result]="1000 | number" ></ngb-highlight></td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>
+        <ngb-highlight [result]="" ></ngb-highlight>
+      </td>
+      <td><ngb-highlight [result]="13 | number" ></ngb-highlight></td>
+      <td><ngb-highlight [result]="1000 | number" ></ngb-highlight></td>
+    </tr>
+    </tbody>
+  </table>
+
   <div class="d-flex justify-content-between p-2">
     <!--<ngb-pagination
       [collectionSize]="(15 | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
