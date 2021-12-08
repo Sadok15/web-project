@@ -1,53 +1,50 @@
+<div class="container">
+<form class="form-inline form-test">
+  <div class="row">
+    <div class="col-6">
+  <div class="form-group mx-sm-3 mb-2">
+    <input type="text" class="form-control" id="inputPassword2" placeholder="Recherche mot clé">
+  </div>
+    </div>
+    <div class="col-6">
+      <button type="submit" class="btn btn-primary mb-2">Recherche</button>
+    </div>
+  </div>
+</form>
+</div>
 <form>
   <!--<div class="form-group form-inline">
       Full text search: <input class="form-control ml-2" type="text" name="searchTerm" />
   </div>!-->
-
+<div class="table-container">
+<div class="container">
   <table class="table table-striped">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col" sortable="name" >Country</th> <!--(sort)="onSort($event)"-->
-      <th scope="col" sortable="area">Area</th>
-      <th scope="col" sortable="population">Population</th>
-    </tr>
-    </thead>
     <tbody>
     <tr>
-      <th scope="row">1</th>
+      <th scope="row"><!--<img src="../assets/images/logo" >!--> Image soc</th>
       <td>
-        <ngb-highlight [result]="" ></ngb-highlight>
+        <small> Recrute en CDD </small><br>
+        <small> Rue 14 Janvier (8060)- Tunisie </small><br>
+        <small> Rémunération Anuelle 49 000$ - 61 250$ </small><br>
       </td>
-      <td><ngb-highlight [result]="13 | number" ></ngb-highlight></td>
-      <td><ngb-highlight [result]="1000 | number" ></ngb-highlight></td>
+      <td style="padding-top: 2rem;">10/12/2020 --> 14/01/2022</td>
+      <td style="padding-top: 2rem;"><input type="submit" class="btn btn-primary" value="Postuler"/></td>
     </tr>
+    <br>
     <tr>
-      <th scope="row">1</th>
+      <th scope="row"><!--<img src="../assets/images/logo" >!--> Image soc</th>
       <td>
-        <ngb-highlight [result]="" ></ngb-highlight>
+        <small> Recrute en CDD </small><br>
+        <small> Rue 14 Janvier (8060)- Tunisie </small><br>
+        <small> Rémunération Anuelle 49 000$ - 61 250$ </small><br>
       </td>
-      <td><ngb-highlight [result]="13 | number" ></ngb-highlight></td>
-      <td><ngb-highlight [result]="1000 | number" ></ngb-highlight></td>
-    </tr>
-    <tr>
-      <th scope="row">1</th>
-      <td>
-        <ngb-highlight [result]="" ></ngb-highlight>
-      </td>
-      <td><ngb-highlight [result]="13 | number" ></ngb-highlight></td>
-      <td><ngb-highlight [result]="1000 | number" ></ngb-highlight></td>
-    </tr>
-    <tr>
-      <th scope="row">1</th>
-      <td>
-        <ngb-highlight [result]="" ></ngb-highlight>
-      </td>
-      <td><ngb-highlight [result]="13 | number" ></ngb-highlight></td>
-      <td><ngb-highlight [result]="1000 | number" ></ngb-highlight></td>
+      <td style="padding-top: 2rem;">10/12/2020 --> 14/01/2022</td>
+      <td style="padding-top: 2rem;"><input type="submit" class="btn btn-primary" value="Postuler"/></td>
     </tr>
     </tbody>
   </table>
-
+</div>
+</div>
   <div class="d-flex justify-content-between p-2">
     <!--<ngb-pagination
       [collectionSize]="(15 | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
