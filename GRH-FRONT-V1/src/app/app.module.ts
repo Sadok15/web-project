@@ -10,6 +10,14 @@ import { InscriptionComponent } from './connexion/auth_inscription/inscription.c
 import { ListOpportuniteComponent } from './Candidat/Opportunite/list-opportunite/list-opportunite.component';
 import { MesOpportuniteComponent } from './Candidat/Opportunite/mes-opportunite/mes-opportunite.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
+const ngWizardConfig: NgWizardConfig = {
+  theme: THEME.default
+};
 
 @NgModule({
   declarations: [
@@ -24,9 +32,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgbModule,
+    BrowserAnimationsModule,
+    NgWizardModule.forRoot(ngWizardConfig),
+    FormsModule, ReactiveFormsModule,
     NgbModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

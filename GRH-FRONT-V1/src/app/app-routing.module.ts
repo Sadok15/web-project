@@ -7,9 +7,9 @@ import { MesOpportuniteComponent } from './Candidat/Opportunite/mes-opportunite/
 
 const routes: Routes = [
   { path: "connexion", component: AuthComponent},
-  { path: "inscription", component: InscriptionComponent},
   { path: "mes_opportunite", component: MesOpportuniteComponent},
   { path: "list_opportunite", component: ListOpportuniteComponent},
+  { path: "inscription", component: InscriptionComponent},
 ];
 
 @NgModule({

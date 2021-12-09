@@ -1,1 +1,116 @@
-<p>inscription works!</p>
+<div class="container py-5">
+  <ng-wizard [config]="config" (stepChanged)="stepChanged($event)">
+
+      <ng-wizard-step [title]="'Step 1'" [description]="'Informations générales'"
+      [canEnter]="isValidTypeBoolean" [canExit]="isValidFunctionReturnsBoolean.bind(this)">
+      <br>
+      <br>
+      <div class="container">
+      <form>
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Numero Téléphone">
+            </div>
+          </div>
+      </div><br>
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Github">
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Linkedin">
+          </div>
+        </div>
+    </div>
+      </form>
+    </div>
+      </ng-wizard-step>
+
+      <ng-wizard-step [title]="'Step 2'" [description]="'Compétences'"
+      [canEnter]="isValidFunctionReturnsObservable.bind(this)" [canExit]="isValidFunctionReturnsBoolean.bind(this)">
+      <div class="container" style="padding: 2rem 20rem 0rem 20rem;">
+
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+          <table class="table table-bordered" formArrayName="quantities">
+            <tr>
+              <th colspan="2">Ajouter Vos Compétences:</th>
+              <th width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary" style="background-color: gray;">Ajouter</button></th>
+            </tr>
+            <tr *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
+              <td>
+                  Compétence 1:
+                  <input type="text" formControlName="price" class="form-control">
+              </td>
+              <td></td>
+              <td>
+                  <button (click)="removeQuantity(i)" class="btn btn-danger" style="background-color: grey;">Enlever</button>
+              </td>
+            </tr>
+          </table>
+
+          <button type="submit" class="btn btn-success">Submit</button>
+
+        </form>
+
+        <br/>
+        {{this.productForm.value | json}}
+      </div>
+      </ng-wizard-step>
+
+
+
+
+
+
+
+
+
+  <ng-wizard-step [title]="'Step 3'" [description]="'Expérience(s) professionnelle(s)'">
+    <div class="container" style="padding: 2rem 10rem 0rem 10rem;">
+
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <table class="table table-bordered" formArrayName="quantities">
+          <tr>
+            <th colspan="2">Ajouter Vos Compétences:</th>
+            <th width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary" style="background-color: gray;">Ajouter</button></th>
+          </tr>
+          <tr *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
+            <td>
+                Expérience 1:
+                <input type="text" formControlName="price" class="form-control">
+            </td>
+            <td>
+              durée :
+              <input type="text" formControlName="price" class="form-control">
+            </td>
+            <td>
+                <button (click)="removeQuantity(i)" class="btn btn-danger" style="background-color: grey;">Enlever</button>
+            </td>
+          </tr>
+        </table>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+
+      </form>
+
+      <br/>
+      {{this.productForm.value | json}}
+    </div>
+      </ng-wizard-step>
+
+  </ng-wizard>
+</div>

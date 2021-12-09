@@ -27,7 +27,10 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ng-wizard/themes/ng_wizard.min.css",
+              "ng-wizard/themes/ng_wizard_theme_arrows.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -95,6 +98,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.css"
             ],
             "scripts": []
