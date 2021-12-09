@@ -36,6 +36,7 @@ const ngWizardConfig: NgWizardConfig = {
     BrowserAnimationsModule,
     NgWizardModule.forRoot(ngWizardConfig),
     FormsModule, ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent],
