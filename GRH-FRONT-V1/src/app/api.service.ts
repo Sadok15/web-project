@@ -9,19 +9,19 @@ export class ApiService {
 
   apiURL: string="http://localhost:3000/";
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  }
+  // httpOptions = {
+  //   headers: new HttpHeaders({
+  //     'Content-Type': 'application/json'
+  //   })
+  // }
 
   constructor(private httpClient: HttpClient) { }
 
-  // public createCandidate( candidate: Candidate){
+  // public createCandidate( candidate: any){
   //   return this.httpClient.post(`${this.apiURL}/add_cand`,candidate)
   // }
 
-  // public getCandidate( candidate: Candidate){
+  // public getCandidate( candidate: any){
   //   return this.httpClient.post(`${this.apiURL}/get_cand`,candidate)
   // }
 }

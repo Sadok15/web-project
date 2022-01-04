@@ -11,26 +11,22 @@ import { ApiService } from 'src/app/api.service';
 })
 export class InscriptionComponent implements OnInit {
 
-  competenceForm: FormGroup
   infoForm:FormGroup
+  competenceForm: FormGroup
   expForm:FormGroup
+  result : {}[] = []
 
-  public result : any
-  email = String
-  mdp = String
-  num_tel= String
-  github= String
-  linkedin= String
-
-  constructor(
-    private ngWizardService: NgWizardService,
-    private fb:FormBuilder,
-    private apiservice:ApiService){
-
+  constructor(private ngWizardService: NgWizardService,private fb:FormBuilder, ){
+    // private apiservice:ApiService
     this.competenceForm = this.fb.group({
-      name: '',
-      quantities: this.fb.array([]) ,
+      competences: this.fb.array([]) ,
     });
+
+    this.result = []
+
+    this.expForm = this.fb.group({
+      experiences: this.fb.array([]) ,
+    })
 
     this.infoForm = this.fb.group({
       email:"",
@@ -40,10 +36,6 @@ export class InscriptionComponent implements OnInit {
       linkedin:""
     })
 
-    this.expForm = this.fb.group({
-      name: '',
-      quantities: this.fb.array([]) ,
-    })
   }
  stepStates = {
   normal: STEP_STATE.normal,
@@ -84,43 +76,7 @@ isValidFunctionReturnsObservable(args: StepValidationArgs) {
 }
 
 
-competences() : FormArray {
-  return this.competenceForm.get("competences") as FormArray
-}
-
-experiences() : FormArray {
-  return this.expForm.get("experiences") as FormArray
-}
-
-newCompetence(): FormGroup {
-  return this.fb.group({
-    comp: '',
-  })
-}
-
-newExperience(): FormGroup {
-  return this.fb.group({
-    duree: '',
-    detail: ''
-  })
-}
-
-addCompetence() {
-  this.competences().push(this.newCompetence());
-}
-
-addExperience() {
-  this.competences().push(this.newExperience());
-}
-
-
-removeQuantity(i:number) {
-  this.competences().removeAt(i);
-}
-
-onSubmit() {
-  console.log(this.competenceForm.value);
-}
+// addd information data
 
 collectData1(){
   var candidate = {
@@ -130,28 +86,62 @@ collectData1(){
     "github" : this.infoForm.get("github")?.value,
     "linkedin" : this.infoForm.get("linkedin")?.value
   }
-  this.result = candidate
+  this.result.push(candidate)
+}
+
+
+// add competences
+
+competences() : FormArray {
+  return this.competenceForm.get("competences") as FormArray
+}
+
+newCompetence(): FormGroup {
+  return this.fb.group({
+    comp: '',
+  })
+}
+
+addCompetence() {
+  this.competences().push(this.newCompetence());
+}
+
+removecompetence(i:number) {
+  this.competences().removeAt(i);
 }
 
 collectData2(){
-
-  this.result = this.competences()
+  this.result.push(this.competenceForm.value)
 }
 
+// Experience data
+
+newExperience(): FormGroup {
+  return this.fb.group({
+    duree: '',
+    detail: ''
+  })
+}
+
+experiences() : FormArray {
+  return this.expForm.get("experiences") as FormArray
+}
+
+addExperience() {
+  this.experiences().push(this.newExperience());
+}
+
+removeExperience(i:number) {
+  this.experiences().removeAt(i);
+}
 
 collectData3(){
-  this.result = this.experiences()
+  this.result.push(this.expForm.value)
+  console.log("++++++++++ ", this.result)
 }
-
-
 
 ngOnInit(): void {
 
-// this.apiservice.createCandidate(candidate).subscribe(
-//     (res:any) => {
-//         console.log("created")
-//     }
-//   )
 }
 
 }
