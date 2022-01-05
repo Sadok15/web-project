@@ -30,8 +30,8 @@ export class AuthComponent implements OnInit {
    }
    this.apiservice.getCandidate(candidate).subscribe(
 
-    data => console.log("success!", data),
-    error => console.error("couldn't post because", error)
+    (data:any) => console.log("success!", data),
+    (error:any) => console.error("couldn't post because", error)
 
 )
   }
