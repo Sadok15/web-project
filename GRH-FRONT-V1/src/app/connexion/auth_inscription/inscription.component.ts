@@ -2,9 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { of } from 'rxjs';
 import { NgWizardConfig, NgWizardService, StepChangedArgs, StepValidationArgs, STEP_STATE, THEME } from 'ng-wizard';
 import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms'
-import { ApiService } from 'src/app/api.service';
+
 import { Candidat } from 'src/app/models/candidat.interface';
+
 import Swal from 'sweetalert2'
+
+import { ApiService } from 'src/app/api.service';
+
 
 @Component({
   selector: 'app-inscription',
