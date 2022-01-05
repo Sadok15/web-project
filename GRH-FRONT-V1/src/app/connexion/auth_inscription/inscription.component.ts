@@ -4,6 +4,7 @@ import { NgWizardConfig, NgWizardService, StepChangedArgs, StepValidationArgs, S
 import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms'
 import { ApiService } from 'src/app/api.service';
 import { Candidat } from 'src/app/models/candidat.interface';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-inscription',
@@ -171,8 +172,27 @@ collectData3(){
 
   this.apiservice.createCandidate(this.Candidat).subscribe(
 
-    data => console.log("success!", data),
-    error => console.error("couldn't post because", error)
+    data => {
+      console.log("success!", data),
+      Swal.fire(
+        'Good job!',
+        'You clicked the button!',
+        'success'
+      ).then((result)=>{
+        if(result.isConfirmed){
+        location.replace('/');
+        }
+    })
+  },
+    error => {
+      console.error("couldn't post because", error),
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+        footer: '<a href="">Why do I have this issue?</a>'
+      })
+    }
 
 )
 }

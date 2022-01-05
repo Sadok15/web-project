@@ -15,6 +15,10 @@ import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from './api.service';
 import { HttpClientModule } from '@angular/common/http';
+
+
+
+
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default
 };

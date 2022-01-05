@@ -22,7 +22,6 @@ export class ApiService {
 
 
   createCandidate( data: Candidat ): Observable<Candidat>{
-
     return this.httpClient.post<Candidat>(`${this.apiURL}/add_cv`, data)
   }
 
