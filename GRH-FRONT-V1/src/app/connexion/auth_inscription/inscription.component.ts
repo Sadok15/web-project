@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { of } from 'rxjs';
 import { NgWizardConfig, NgWizardService, StepChangedArgs, StepValidationArgs, STEP_STATE, THEME } from 'ng-wizard';
 import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms'
+import { ApiService } from 'src/app/api.service';
+import { Candidat } from 'src/app/models/candidat.interface';
 
 @Component({
   selector: 'app-inscription',
@@ -10,14 +12,58 @@ import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms'
 })
 export class InscriptionComponent implements OnInit {
 
-  productForm: FormGroup
+  infoForm:FormGroup
+  competenceForm: FormGroup
+  expForm:FormGroup
+  result : {} = {}
+  Candidat : Candidat =
+    {
+        email:  "" ,
+        mdp :  "" ,
+        num_tel :  "" ,
+        github :  "" ,
+        linkedin : "",
+        competences : [
+          {
+                comp : ""
+          }
+      ],
+        experiences : [
+          {
+                duree :  "" ,
+                detail :  ""
+          }
+      ]
+    }
 
-  constructor(private ngWizardService: NgWizardService,private fb:FormBuilder){
 
-    this.productForm = this.fb.group({
-      name: '',
-      quantities: this.fb.array([]) ,
+
+
+
+
+  constructor(
+      private ngWizardService: NgWizardService,
+      private fb:FormBuilder,
+      private apiservice:ApiService
+      ){
+
+    this.competenceForm = this.fb.group({
+      competences: this.fb.array([]) ,
     });
+
+    this.result = {}
+    this.expForm = this.fb.group({
+      experiences: this.fb.array([]) ,
+    })
+
+    this.infoForm = this.fb.group({
+      email:"",
+      mdp:"",
+      num_tel:"",
+      github:"",
+      linkedin:""
+    })
+
   }
  stepStates = {
   normal: STEP_STATE.normal,
@@ -30,7 +76,9 @@ config: NgWizardConfig = {
   theme: THEME.arrows,
   toolbarSettings: {
     toolbarExtraButtons: [
-      { text: 'Finish', class: 'btn btn-info', event: () => { alert("Finished!!!"); } }
+      { text: 'Finish', class: 'btn btn-info', event: () => {
+
+        } }
     ],
   }
 };
@@ -58,30 +106,80 @@ isValidFunctionReturnsObservable(args: StepValidationArgs) {
 }
 
 
-quantities() : FormArray {
-  return this.productForm.get("quantities") as FormArray
+// addd information data
+
+collectData1(){
+  this.Candidat["email"] = this.infoForm.get("email")?.value
+  this.Candidat["mdp"] = this.infoForm.get("mdp")?.value
+  this.Candidat["num_tel"] = this.infoForm.get("num_tel")?.value
+  this.Candidat["github"] = this.infoForm.get("github")?.value
+  this.Candidat["linkedin"] = this.infoForm.get("linkedin")?.value
+
+  this.ngWizardService.next();
 }
 
-newQuantity(): FormGroup {
+
+// add competences
+
+competences() : FormArray {
+  return this.competenceForm.get("competences") as FormArray
+}
+
+newCompetence(): FormGroup {
   return this.fb.group({
-    qty: '',
-    price: '',
+    comp: '',
   })
 }
 
-addQuantity() {
-  this.quantities().push(this.newQuantity());
+addCompetence() {
+  this.competences().push(this.newCompetence());
 }
 
-removeQuantity(i:number) {
-  this.quantities().removeAt(i);
+removecompetence(i:number) {
+  this.competences().removeAt(i);
 }
 
-onSubmit() {
-  console.log(this.productForm.value);
+collectData2(){
+  this.Candidat["competences"] = this.competenceForm.value
+  this.ngWizardService.next();
+}
+
+// Experience data
+
+newExperience(): FormGroup {
+  return this.fb.group({
+    duree: '',
+    detail: ''
+  })
+}
+
+experiences() : FormArray {
+  return this.expForm.get("experiences") as FormArray
+}
+
+addExperience() {
+  this.experiences().push(this.newExperience());
+}
+
+removeExperience(i:number) {
+  this.experiences().removeAt(i);
+}
+
+collectData3(){
+  this.Candidat["experiences"] = this.expForm.value
+  console.log("candidat object final ",JSON.stringify(this.Candidat))
+
+  this.apiservice.createCandidate(this.Candidat).subscribe(
+
+    data => console.log("success!", data),
+    error => console.error("couldn't post because", error)
+
+)
 }
 
 ngOnInit(): void {
+  let serializedForm = JSON.stringify(this.result);
+  console.log("serilazer ---- ",serializedForm)
 }
 
 }

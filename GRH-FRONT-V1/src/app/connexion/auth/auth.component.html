@@ -12,10 +12,10 @@
     </div>
 
     <!-- Login Form -->
-    <form>
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
+    <form [formGroup]="authForm">
+      <input type="text" id="login" class="fadeIn second" formControlName="email" placeholder="E-mail">
+      <input type="text" id="password" class="fadeIn third" formControlName="mdp" placeholder="Mot de passe">
+      <input type="submit"  class="fadeIn fourth" value="Log In" (click)="SubmitForm()">
     </form>
 
     <!-- Remind Passowrd -->
