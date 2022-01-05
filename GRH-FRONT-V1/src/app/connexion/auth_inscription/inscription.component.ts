@@ -3,6 +3,7 @@ import { of } from 'rxjs';
 import { NgWizardConfig, NgWizardService, StepChangedArgs, StepValidationArgs, STEP_STATE, THEME } from 'ng-wizard';
 import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms'
 import { ApiService } from 'src/app/api.service';
+import { Candidat } from 'src/app/models/candidat.interface';
 
 @Component({
   selector: 'app-inscription',
@@ -14,16 +15,43 @@ export class InscriptionComponent implements OnInit {
   infoForm:FormGroup
   competenceForm: FormGroup
   expForm:FormGroup
-  result : {}[] = []
+  result : {} = {}
+  Candidat : Candidat =
+    {
+        email:  "" ,
+        mdp :  "" ,
+        num_tel :  "" ,
+        github :  "" ,
+        linkedin : "",
+        competences : [
+          {
+                comp : ""
+          }
+      ],
+        experiences : [
+          {
+                duree :  "" ,
+                detail :  ""
+          }
+      ]
+    }
 
-  constructor(private ngWizardService: NgWizardService,private fb:FormBuilder, ){
-    // private apiservice:ApiService
+
+
+
+
+
+  constructor(
+      private ngWizardService: NgWizardService,
+      private fb:FormBuilder,
+      private apiservice:ApiService
+      ){
+
     this.competenceForm = this.fb.group({
       competences: this.fb.array([]) ,
     });
 
-    this.result = []
-
+    this.result = {}
     this.expForm = this.fb.group({
       experiences: this.fb.array([]) ,
     })
@@ -48,7 +76,9 @@ config: NgWizardConfig = {
   theme: THEME.arrows,
   toolbarSettings: {
     toolbarExtraButtons: [
-      { text: 'Finish', class: 'btn btn-info', event: () => { alert("Finished!!!"); } }
+      { text: 'Finish', class: 'btn btn-info', event: () => {
+
+        } }
     ],
   }
 };
@@ -79,14 +109,13 @@ isValidFunctionReturnsObservable(args: StepValidationArgs) {
 // addd information data
 
 collectData1(){
-  var candidate = {
-    "email" : this.infoForm.get("email")?.value,
-    "mdp" : this.infoForm.get("mdp")?.value,
-    "num_tel" : this.infoForm.get("num_tel")?.value,
-    "github" : this.infoForm.get("github")?.value,
-    "linkedin" : this.infoForm.get("linkedin")?.value
-  }
-  this.result.push(candidate)
+  this.Candidat["email"] = this.infoForm.get("email")?.value
+  this.Candidat["mdp"] = this.infoForm.get("mdp")?.value
+  this.Candidat["num_tel"] = this.infoForm.get("num_tel")?.value
+  this.Candidat["github"] = this.infoForm.get("github")?.value
+  this.Candidat["linkedin"] = this.infoForm.get("linkedin")?.value
+
+  this.ngWizardService.next();
 }
 
 
@@ -111,7 +140,8 @@ removecompetence(i:number) {
 }
 
 collectData2(){
-  this.result.push(this.competenceForm.value)
+  this.Candidat["competences"] = this.competenceForm.value
+  this.ngWizardService.next();
 }
 
 // Experience data
@@ -136,12 +166,20 @@ removeExperience(i:number) {
 }
 
 collectData3(){
-  this.result.push(this.expForm.value)
-  console.log("++++++++++ ", this.result)
+  this.Candidat["experiences"] = this.expForm.value
+  console.log("candidat object final ",JSON.stringify(this.Candidat))
+
+  this.apiservice.createCandidate(this.Candidat).subscribe(
+
+    data => console.log("success!", data),
+    error => console.error("couldn't post because", error)
+
+)
 }
 
 ngOnInit(): void {
-
+  let serializedForm = JSON.stringify(this.result);
+  console.log("serilazer ---- ",serializedForm)
 }
 
 }

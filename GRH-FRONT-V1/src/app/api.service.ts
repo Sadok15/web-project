@@ -1,27 +1,38 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders  } from '@angular/common/http';
-
+import { HttpClient, HttpHeaders,HttpClientModule  } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Candidat } from './models/candidat.interface';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ApiService {
 
-  apiURL: string="http://localhost:3000/";
+  private apiURL= "http://localhost:3000/api";
 
-  // httpOptions = {
-  //   headers: new HttpHeaders({
-  //     'Content-Type': 'application/json'
-  //   })
-  // }
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  }
+
 
   constructor(private httpClient: HttpClient) { }
 
-  // public createCandidate( candidate: any){
-  //   return this.httpClient.post(`${this.apiURL}/add_cand`,candidate)
-  // }
 
-  // public getCandidate( candidate: any){
-  //   return this.httpClient.post(`${this.apiURL}/get_cand`,candidate)
-  // }
+  createCandidate( data: Candidat ): Observable<Candidat>{
+
+    return this.httpClient.post<Candidat>(`${this.apiURL}/add_cv`, data)
+  }
+
+
+
+
+
+
+
+  public getCandidate( candidate: any){
+    return this.httpClient.post(`${this.apiURL}/get_cand`,candidate)
+  }
 }
