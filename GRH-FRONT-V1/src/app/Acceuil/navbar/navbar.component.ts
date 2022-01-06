@@ -15,8 +15,8 @@ export class NavbarComponent implements OnInit {
   removeConnexion(){
 
     localStorage.removeItem("user")
-    this.route.navigate(['/connexion']);
     window.location.reload();
+    this.route.navigate(['/connexion']);
   }
   ngOnInit(): void {
     this.user = localStorage.getItem("user")

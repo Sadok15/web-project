@@ -184,7 +184,7 @@ collectData3(){
         'success'
       ).then((result)=>{
         if(result.isConfirmed){
-        location.replace('/');
+        location.replace('/list_opportunite');
         }
     })
   },
