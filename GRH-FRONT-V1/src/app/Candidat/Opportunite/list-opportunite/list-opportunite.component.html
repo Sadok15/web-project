@@ -29,58 +29,13 @@
         <small> Rémunération Anuelle {{oppotunite.min_renumeration}}$-{{oppotunite.max_renumeration}}$ </small><br>
       </td>
       <td style="padding-top: 2rem;">10/12/2020 --> 14/01/2022</td>
-      <td style="padding-top: 2rem;"><input type="submit" class="btn btn-primary" value="Postuler"/></td>
+      <td style="padding-top: 2rem;"><input type="submit" class="btn btn-primary" value="Postuler" (click)="Postuler(oppotunite._id)"/></td>
     </tr>
     <br>
     </tbody>
   </table>
 </div>
 </div>
-
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col" sortable="name" >Country</th> <!--(sort)="onSort($event)"-->
-      <th scope="col" sortable="area">Area</th>
-      <th scope="col" sortable="population">Population</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>
-        <ngb-highlight [result]="" ></ngb-highlight>
-      </td>
-      <td><ngb-highlight [result]="13 | number" ></ngb-highlight></td>
-      <td><ngb-highlight [result]="1000 | number" ></ngb-highlight></td>
-    </tr>
-    <tr>
-      <th scope="row">1</th>
-      <td>
-        <ngb-highlight [result]="" ></ngb-highlight>
-      </td>
-      <td><ngb-highlight [result]="13 | number" ></ngb-highlight></td>
-      <td><ngb-highlight [result]="1000 | number" ></ngb-highlight></td>
-    </tr>
-    <tr>
-      <th scope="row">1</th>
-      <td>
-        <ngb-highlight [result]="" ></ngb-highlight>
-      </td>
-      <td><ngb-highlight [result]="13 | number" ></ngb-highlight></td>
-      <td><ngb-highlight [result]="1000 | number" ></ngb-highlight></td>
-    </tr>
-    <tr>
-      <th scope="row">1</th>
-      <td>
-        <ngb-highlight [result]="" ></ngb-highlight>
-      </td>
-      <td><ngb-highlight [result]="13 | number" ></ngb-highlight></td>
-      <td><ngb-highlight [result]="1000 | number" ></ngb-highlight></td>
-    </tr>
-    </tbody>
-  </table>
 
   <div class="d-flex justify-content-between p-2">
     <!--<ngb-pagination
