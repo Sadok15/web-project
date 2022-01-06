@@ -30,7 +30,7 @@ const ngWizardConfig: NgWizardConfig = {
     AuthComponent,
     InscriptionComponent,
     ListOpportuniteComponent,
-    MesOpportuniteComponent
+    MesOpportuniteComponent,
   ],
   imports: [
     BrowserModule,

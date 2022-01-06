@@ -14,5 +14,6 @@ export class CandOpp{
   id_opportunity:string="";
   mail:string="";
   mdp:string="";
+  id_cand:string="";
 }
 

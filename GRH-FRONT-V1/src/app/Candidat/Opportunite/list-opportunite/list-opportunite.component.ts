@@ -17,6 +17,7 @@ export class ListOpportuniteComponent implements OnInit {
     id_opportunity :  "" ,
     mail:  "" ,
     mdp :  "" ,
+    id_cand :  "" ,
    }
   constructor(private opportunitegetService : OpportunitegetService) { }
 
@@ -29,6 +30,7 @@ export class ListOpportuniteComponent implements OnInit {
 
     this.candopp["mail"] = this.dict["email"]
     this.candopp["mdp"] = this.dict["mdp"]
+    this.candopp["id_cand"] = this.dict["_id"]
     }else{
       this.candopp["mail"] = ""
     this.candopp["mdp"] = ""
@@ -36,6 +38,7 @@ export class ListOpportuniteComponent implements OnInit {
     this.candopp["id_opportunity"] = id_opp
 
     if (this.candopp["mail"]){
+      console.log(" ----- +++ 0",this.candopp)
     this.opportunitegetService.postulerOpp(this.candopp).subscribe(
 
       data => {
