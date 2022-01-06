@@ -7,6 +7,7 @@ export class ListOpportunite{
     min_renumeration:string="";
     status_id:string="";
     contrat_id:string="";
+    id_opportunity:any={};
 
   }
 
