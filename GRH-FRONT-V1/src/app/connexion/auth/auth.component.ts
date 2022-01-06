@@ -11,6 +11,11 @@ import Swal from 'sweetalert2'
 export class AuthComponent implements OnInit {
 
   authForm:FormGroup
+  get_cand : any= {
+    "email": "",
+    "mdp": ""
+  }
+
   constructor(
     private fb:FormBuilder,
     private apiservice:ApiService
@@ -31,10 +36,13 @@ export class AuthComponent implements OnInit {
    }
    this.apiservice.getCandidate(candidate).subscribe(
 
-    data => {
+    (data: any )=> {
+      localStorage.setItem("user", JSON.stringify(candidate));
+      console.log("---- data ---- ", data.length)
+      // if (data.length = 0){
+      this.get_cand = data
       // console.log("---- data ---- ", data)
       localStorage.setItem("user", JSON.stringify(candidate));
-      // console.log("-------- test json -------------- ", JSON.stringify(candidate))
       Swal.fire(
         'Good job!',
         'You clicked the button!',
@@ -44,7 +52,15 @@ export class AuthComponent implements OnInit {
         location.replace('/');
         }
     })
-  },
+  // } else {
+  //   Swal.fire({
+  //     icon: 'error',
+  //     title: 'Inscrivez-vous .... ',
+  //     text: 'Something went wrong!',
+  //     footer: '<a href="/inscription">Inscription</a>'
+  //   })
+  // }
+},
     error => {
       Swal.fire({
         icon: 'error',
