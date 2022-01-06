@@ -14,6 +14,18 @@ export class MesOpportuniteComponent implements OnInit {
 
 
   constructor(private opportunitegetService : OpportunitegetService) { }
+
+
+  getlistopppotunité_cond(){
+    console.log("éhehehehehhehe")
+    this.opportunitegetService.getlistopportunité_cond(this.id_condidat).subscribe((data:ListOpportunite[]) =>{
+      console.log("teeeeeeeeeeeeeeeeest")
+      this.listopportunite_cond= data ; 
+       console.log(data);
+
+     });
+  }
+
   ngOnInit(): void {
     this.user = localStorage.getItem("user")
     this.dict = JSON.parse(this.user)
@@ -28,12 +40,6 @@ export class MesOpportuniteComponent implements OnInit {
 
 
 
-  getlistopppotunité_cond(){
-    this.opportunitegetService.getlistopportunité_cond(this.id_condidat).subscribe((data:ListOpportunite[]) =>{
-      this.listopportunite_cond= data ; 
-       console.log(data);
-
-     });
-  }
+ 
 
 }
