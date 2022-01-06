@@ -39,7 +39,7 @@ export class AuthComponent implements OnInit {
     (data: any )=> {
       localStorage.setItem("user", JSON.stringify(candidate));
       console.log("---- data ---- ", data.length)
-      // if (data.length = 0){
+      if (data){
       this.get_cand = data
       // console.log("---- data ---- ", data)
       localStorage.setItem("user", JSON.stringify(candidate));
@@ -52,14 +52,14 @@ export class AuthComponent implements OnInit {
         location.replace('/');
         }
     })
-  // } else {
-  //   Swal.fire({
-  //     icon: 'error',
-  //     title: 'Inscrivez-vous .... ',
-  //     text: 'Something went wrong!',
-  //     footer: '<a href="/inscription">Inscription</a>'
-  //   })
-  // }
+  } else {
+    Swal.fire({
+      icon: 'error',
+      title: 'Inscrivez-vous .... ',
+      text: 'Something went wrong!',
+      footer: '<a href="/inscription">Inscription</a>'
+    })
+  }
 },
     error => {
       Swal.fire({
