@@ -18,9 +18,9 @@ export class OpportunitegetService {
       return data;
     }));
   }
-  getlistopportunité_cond(): Observable<ListOpportunite[]>{
+  getlistopportunité_cond(_id_condidat : any): Observable<ListOpportunite[]>{
 
-    return this.http.get<any>(`${this.apiURL}/list_opportunity_cond`)
+    return this.http.get<any>(`${this.apiURL}/list_opportunity_cond/${_id_condidat}`)
     .pipe(map(data => {
     
       return data;
