@@ -18,29 +18,20 @@
     </div>!-->
   <div class="table-container">
   <div class="container">
-    <table class="table table-striped">
+    <table class="table table-striped" *ngFor="let oppotunite of listopportunite_cond">
       <tbody>
       <tr>
         <th scope="row"><!--<img src="../assets/images/logo" >!--> Image soc</th>
         <td>
-          <small> Recrute en CDD </small><br>
-          <small> Rue 14 Janvier (8060)- Tunisie </small><br>
-          <small> Rémunération Anuelle 49 000$ - 61 250$ </small><br>
+          td>
+          <small>{{oppotunite.title}} Recrute en CDD </small><br>
+          <small>{{oppotunite.description}} Rue 14 Janvier (8060)- Tunisie </small><br>
+          <small>{{oppotunite.max_renumeration}} Rémunération Anuelle 49 000$ - 61 250$ </small><br>
         </td>
         <td style="padding-top: 2rem;">10/12/2020 --> 14/01/2022</td>
         <td style="padding-top: 2rem;"><small><b>Terminé</b></small></td>
       </tr>
       <br>
-      <tr>
-        <th scope="row"><!--<img src="../assets/images/logo" >!--> Image soc</th>
-        <td>
-          <small> Recrute en CDD </small><br>
-          <small> Rue 14 Janvier (8060)- Tunisie </small><br>
-          <small> Rémunération Anuelle 49 000$ - 61 250$ </small><br>
-        </td>
-        <td style="padding-top: 2rem;">10/12/2020 --> 14/01/2022</td>
-        <td style="padding-top: 2rem;"><small><b>Terminé</b></small></td>
-      </tr>
       </tbody>
     </table>
   </div>

@@ -22,26 +22,16 @@
   <table class="table table-striped" *ngFor="let oppotunite of listopportunite">
     <tbody >
     <tr>
-      <th scope="row"><!--<img src="../assets/images/logo" >!--> Image soc</th>
       <td>
-        <small>{{oppotunite.title}} Recrute en CDD </small><br>
-        <small>{{oppotunite.description}} Rue 14 Janvier (8060)- Tunisie </small><br>
-        <small>{{oppotunite.max_renumeration}} Rémunération Anuelle 49 000$ - 61 250$ </small><br>
+        <small>{{oppotunite.title}} </small><br>
+        <small>{{oppotunite.description}}  </small><br>
+        <small>{{oppotunite.adresse_soc}}  </small><br>
+        <small> Rémunération Anuelle {{oppotunite.min_renumeration}}$-{{oppotunite.max_renumeration}}$ </small><br>
       </td>
-      <td style="padding-top: 2rem;">{{oppotunite.title}}10/12/2020 --> 14/01/2022</td>
+      <td style="padding-top: 2rem;">10/12/2020 --> 14/01/2022</td>
       <td style="padding-top: 2rem;"><input type="submit" class="btn btn-primary" value="Postuler"/></td>
     </tr>
     <br>
-    <!-- <tr>
-      <th scope="row"><!--<img src="../assets/images/logo" > Image soc</th>
-      <!-- <td>
-        <small> Recrute en CDD </small><br>
-        <small> Rue 14 Janvier (8060)- Tunisie </small><br>
-        <small> Rémunération Anuelle 49 000$ - 61 250$ </small><br>
-      </td>
-      <td style="padding-top: 2rem;">10/12/2020  14/01/2022</td>
-      <td style="padding-top: 2rem;"><input type="submit" class="btn btn-primary" value="Postuler"/></td> 
-    </tr> -->
     </tbody>
   </table>
 </div>
