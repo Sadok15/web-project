@@ -49,7 +49,7 @@ export class AuthComponent implements OnInit {
         'success'
       ).then((result)=>{
         if(result.isConfirmed){
-        location.replace('/');
+        location.replace('/list_opportunite');
         }
     })
   } else {
