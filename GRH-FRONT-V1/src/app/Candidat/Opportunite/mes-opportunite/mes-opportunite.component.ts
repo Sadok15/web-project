@@ -32,7 +32,7 @@ export class MesOpportuniteComponent implements OnInit {
     this.opportunitegetService.getlistopportunité_cond(this.id_condidat).subscribe((data:ListOpportunite[]) =>{
       this.listopportunite_cond= data ; 
        console.log(data);
-       
+
      });
   }
 

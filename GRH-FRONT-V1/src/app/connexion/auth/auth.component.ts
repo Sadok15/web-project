@@ -33,15 +33,15 @@ export class AuthComponent implements OnInit {
     var candidate = {
       "email" : this.authForm.get("email")?.value,
       "mdp" : this.authForm.get("mdp")?.value,
+      "_id": ""
    }
    this.apiservice.getCandidate(candidate).subscribe(
 
     (data: any )=> {
-      localStorage.setItem("user", JSON.stringify(candidate));
-      console.log("---- data ---- ", data.length)
       if (data){
+        candidate["_id"] = data["_id"]
       this.get_cand = data
-      // console.log("---- data ---- ", data)
+      console.log("---- data ---- ", candidate)
       localStorage.setItem("user", JSON.stringify(candidate));
       Swal.fire(
         'Good job!',
